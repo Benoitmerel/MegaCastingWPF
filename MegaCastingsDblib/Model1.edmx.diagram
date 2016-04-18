@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="479be8dfed6e4e3dbc58cbe8b7d218aa" Name="Diagram1" >
+        <EntityTypeShape EntityType="MegaCastingModel1.Client" Width="1.5" PointX="3" PointY="7.625" />
+        <EntityTypeShape EntityType="MegaCastingModel1.DomaineDeMetier" Width="1.5" PointX="0.75" PointY="2.125" />
+        <EntityTypeShape EntityType="MegaCastingModel1.Metier" Width="1.5" PointX="3" PointY="2" />
+        <EntityTypeShape EntityType="MegaCastingModel1.Offre" Width="1.5" PointX="5.25" PointY="1" />
+        <EntityTypeShape EntityType="MegaCastingModel1.Partenaire" Width="1.5" PointX="5.75" PointY="5.75" />
+        <EntityTypeShape EntityType="MegaCastingModel1.TypesDeContrat" Width="1.5" PointX="3" PointY="5.375" />
+        <AssociationConnector Association="MegaCastingModel1.FK_Offres_Clients" />
+        <AssociationConnector Association="MegaCastingModel1.FK_Metier_DomaineDeMetier" />
+        <AssociationConnector Association="MegaCastingModel1.FK_Offres_Metier" />
+        <AssociationConnector Association="MegaCastingModel1.FK_Offres_TypesDeContrat" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

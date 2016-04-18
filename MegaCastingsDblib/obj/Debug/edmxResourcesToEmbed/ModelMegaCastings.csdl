@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MegaCastingModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="MegaCastingEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Clients" EntityType="MegaCastingModel.Client" />
+    <EntitySet Name="DomaineDeMetiers" EntityType="MegaCastingModel.DomaineDeMetier" />
+    <EntitySet Name="Metiers" EntityType="MegaCastingModel.Metier" />
+    <EntitySet Name="Offres" EntityType="MegaCastingModel.Offre" />
+    <EntitySet Name="Partenaires" EntityType="MegaCastingModel.Partenaire" />
+    <EntitySet Name="TypesDeContrats" EntityType="MegaCastingModel.TypesDeContrat" />
+    <AssociationSet Name="FK_Offres_Clients" Association="MegaCastingModel.FK_Offres_Clients">
+      <End Role="Client" EntitySet="Clients" />
+      <End Role="Offre" EntitySet="Offres" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Metier_DomaineDeMetier" Association="MegaCastingModel.FK_Metier_DomaineDeMetier">
+      <End Role="DomaineDeMetier" EntitySet="DomaineDeMetiers" />
+      <End Role="Metier" EntitySet="Metiers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Offres_Metier" Association="MegaCastingModel.FK_Offres_Metier">
+      <End Role="Metier" EntitySet="Metiers" />
+      <End Role="Offre" EntitySet="Offres" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Offres_TypesDeContrat" Association="MegaCastingModel.FK_Offres_TypesDeContrat">
+      <End Role="TypesDeContrat" EntitySet="TypesDeContrats" />
+      <End Role="Offre" EntitySet="Offres" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Client">
+    <Key>
+      <PropertyRef Name="Identifiant" />
+    </Key>
+    <Property Name="Identifiant" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nom" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Siret" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="URL" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Telephone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Fax" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="NumeroRue" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Rue" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="CodePostal" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Ville" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Offres" Relationship="MegaCastingModel.FK_Offres_Clients" FromRole="Client" ToRole="Offre" />
+  </EntityType>
+  <EntityType Name="DomaineDeMetier">
+    <Key>
+      <PropertyRef Name="Identifiant" />
+    </Key>
+    <Property Name="Identifiant" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NomDomaine" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Metiers" Relationship="MegaCastingModel.FK_Metier_DomaineDeMetier" FromRole="DomaineDeMetier" ToRole="Metier" />
+  </EntityType>
+  <EntityType Name="Metier">
+    <Key>
+      <PropertyRef Name="Identifiant" />
+    </Key>
+    <Property Name="Identifiant" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NomMetier" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="IdentifiantDomaine" Type="Int64" Nullable="false" />
+    <NavigationProperty Name="DomaineDeMetier" Relationship="MegaCastingModel.FK_Metier_DomaineDeMetier" FromRole="Metier" ToRole="DomaineDeMetier" />
+    <NavigationProperty Name="Offres" Relationship="MegaCastingModel.FK_Offres_Metier" FromRole="Metier" ToRole="Offre" />
+  </EntityType>
+  <EntityType Name="Offre">
+    <Key>
+      <PropertyRef Name="Identifiant" />
+    </Key>
+    <Property Name="Identifiant" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdentifiantTypesContrat" Type="Int64" Nullable="false" />
+    <Property Name="IdentifiantMetier" Type="Int64" Nullable="false" />
+    <Property Name="IdentifiantClients" Type="Int64" Nullable="false" />
+    <Property Name="Intitule" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Reference" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DescriptionPoste" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="DescriptionProfil" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="Localisation" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="NombreDePostes" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DateDebutPublication" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="DureedeDiffusion" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Client" Relationship="MegaCastingModel.FK_Offres_Clients" FromRole="Offre" ToRole="Client" />
+    <NavigationProperty Name="Metier" Relationship="MegaCastingModel.FK_Offres_Metier" FromRole="Offre" ToRole="Metier" />
+    <NavigationProperty Name="TypesDeContrat" Relationship="MegaCastingModel.FK_Offres_TypesDeContrat" FromRole="Offre" ToRole="TypesDeContrat" />
+  </EntityType>
+  <EntityType Name="Partenaire">
+    <Key>
+      <PropertyRef Name="Identifiant" />
+    </Key>
+    <Property Name="Identifiant" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nom" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MotDePasse" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="TypesDeContrat">
+    <Key>
+      <PropertyRef Name="Identifiant" />
+    </Key>
+    <Property Name="Identifiant" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NomContrat" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Offres" Relationship="MegaCastingModel.FK_Offres_TypesDeContrat" FromRole="TypesDeContrat" ToRole="Offre" />
+  </EntityType>
+  <Association Name="FK_Offres_Clients">
+    <End Type="MegaCastingModel.Client" Role="Client" Multiplicity="1" />
+    <End Type="MegaCastingModel.Offre" Role="Offre" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Client">
+        <PropertyRef Name="Identifiant" />
+      </Principal>
+      <Dependent Role="Offre">
+        <PropertyRef Name="IdentifiantClients" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Metier_DomaineDeMetier">
+    <End Type="MegaCastingModel.DomaineDeMetier" Role="DomaineDeMetier" Multiplicity="1" />
+    <End Type="MegaCastingModel.Metier" Role="Metier" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DomaineDeMetier">
+        <PropertyRef Name="Identifiant" />
+      </Principal>
+      <Dependent Role="Metier">
+        <PropertyRef Name="IdentifiantDomaine" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Offres_Metier">
+    <End Type="MegaCastingModel.Metier" Role="Metier" Multiplicity="1" />
+    <End Type="MegaCastingModel.Offre" Role="Offre" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Metier">
+        <PropertyRef Name="Identifiant" />
+      </Principal>
+      <Dependent Role="Offre">
+        <PropertyRef Name="IdentifiantMetier" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Offres_TypesDeContrat">
+    <End Type="MegaCastingModel.TypesDeContrat" Role="TypesDeContrat" Multiplicity="1" />
+    <End Type="MegaCastingModel.Offre" Role="Offre" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TypesDeContrat">
+        <PropertyRef Name="Identifiant" />
+      </Principal>
+      <Dependent Role="Offre">
+        <PropertyRef Name="IdentifiantTypesContrat" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

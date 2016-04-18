@@ -1,0 +1,33 @@
+﻿<Window x:Class="MegaCastingsWPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MegaCastingsWPF"
+        mc:Ignorable="d"
+        Title="MegaCastings" Height="700" Width="900">
+    <Grid>
+        <TabControl Style="{StaticResource TabControlStyle}" Margin="10">
+            <TabItem Header="Clients" Style="{StaticResource TabItemStyle}">
+                <local:ClientsView/>
+            </TabItem>
+            <TabItem Header="Offres" Style="{StaticResource TabItemStyle}">
+                <local:OffresView/>
+            </TabItem>
+            <TabItem Header="Métier" Style="{StaticResource TabItemStyle}">
+                <local:MetierView/>
+            </TabItem>
+            <TabItem Header="Domaine métier" Style="{StaticResource TabItemStyle}">
+                <local:DomaineMetierView/>
+            </TabItem>
+            <TabItem Header="Types des contrats" Style="{StaticResource TabItemStyle}">
+                <local:TypesContratsView/>
+            </TabItem>
+            <TabItem Header="Partenaire" Style="{StaticResource TabItemStyle}">
+                <local:PartenaireView/>
+            </TabItem>
+        </TabControl>
+    </Grid>
+
+    
+</Window>

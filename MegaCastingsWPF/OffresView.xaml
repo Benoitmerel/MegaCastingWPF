@@ -1,0 +1,114 @@
+﻿<UserControl x:Class="MegaCastingsWPF.OffresView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MegaCastingsWPF"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200" />
+            <ColumnDefinition Width="*" />
+
+        </Grid.ColumnDefinitions>
+        <GroupBox Margin="10" Header="Offres"  Grid.Column="0">
+            <Grid>
+                <ListBox x:Name="LST_Offres" ItemsSource="{Binding ListeOffres}">
+                    <ListBox.ItemTemplate >
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Intitule}" />
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </Grid>
+
+        </GroupBox>
+        <Button  Margin="10" x:Name="BTN_Ajouter" Grid.Row="1" Grid.Column="0" Padding="5" Click="BTN_Ajouter_Click">Ajouter</Button>
+        <Grid Margin="10" Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="auto"/>
+
+
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="30" />
+                <ColumnDefinition Width="150" />
+                <ColumnDefinition Width="150" />
+                <ColumnDefinition Width="150" />
+            </Grid.ColumnDefinitions>
+
+            <Label Content="Type de contrat"  Grid.Column="1" Grid.Row="1" Margin="5"></Label>
+            <ComboBox x:Name="CBX_TypesDecontrat" Grid.Column="2" Grid.Row="1" Margin="5" SelectedItem="{Binding ElementName=LST_Offres, Path=SelectedItem.TypesDeContrat}" ItemsSource="{Binding  ListeTypesDeContrat}" >
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding NomContrat}" />
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+
+
+            <Label Content="Métier"  Grid.Column="1" Grid.Row="2" Margin="5"></Label>
+            <ComboBox x:Name="CBX_Metier" Grid.Column="2" Grid.Row="2" Margin="5" SelectedItem="{Binding ElementName=LST_Offres, Path=SelectedItem.Metier}" ItemsSource="{Binding  ListeMetier}" >
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding NomMetier}" />
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+
+
+            <Label Content="Nom du client" Grid.Column="1" Grid.Row="3" Margin="5"></Label>
+            <ComboBox x:Name="CBX_Client" Grid.Column="2" Grid.Row="3" Margin="5" SelectedItem="{Binding ElementName=LST_Offres, Path=SelectedItem.Client , UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding  ListeClients}" >
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Nom}" />
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+
+
+            <Label Content="Intitule" Grid.Column="1" Grid.Row="4" Margin="5"></Label>
+            <TextBox x:Name="TXT_Intitule" Grid.Column="2" Grid.Row="4"  Margin="5" Text="{Binding ElementName=LST_Offres, Path=SelectedItem.Intitule}" />
+            <Label Content="Numero de Siret"  Grid.Column="1" Grid.Row="5"  Margin="5"></Label>
+            <TextBox x:Name="TXT_Reference" Grid.Column="2" Grid.Row="5"  Margin="5" Text="{Binding ElementName=LST_Offres, Path=SelectedItem.Reference}" />
+
+            <Label Content="Description du poste" Grid.Column="1" Grid.Row="6"  Margin="5"></Label>
+            <TextBox x:Name="TXT_DescritptionPoste" Grid.Column="2" Grid.Row="6"  Margin="5" Text="{Binding ElementName=LST_Offres, Path=SelectedItem.DescriptionPoste}" />
+            <Label Content="Descritption du profil"  Grid.Column="1" Grid.Row="7"  Margin="5"></Label>
+            <TextBox x:Name="TXT_DescritptionProfil" Grid.Column="2" Grid.Row="7"  Margin="5" Text="{Binding ElementName=LST_Offres, Path=SelectedItem.DescriptionProfil}" />
+
+          
+            <Label Content="Localisation de l'offre"  Grid.Column="1" Grid.Row="8" Margin="5"></Label>
+            <TextBox x:Name="TXT_Localisation" Grid.Column="2" Grid.Row="8" Margin="5" Text="{Binding ElementName=LST_Offres, Path=SelectedItem.Localisation}" />
+
+            <Label Content="Nombre de poste" Grid.Column="1" Grid.Row="9" Margin="5"></Label>
+            <TextBox x:Name="TXT_NombreDePostes" Grid.Column="2" Grid.Row="9" Margin="5" Text="{Binding ElementName=LST_Offres, Path=SelectedItem.NombreDePostes}" />
+            <Label Content="Date de publication"  Grid.Column="1" Grid.Row="10" Margin="5"></Label>
+            <TextBox x:Name="TXT_DateDebutPublication" Grid.Column="2" Grid.Row="10" Margin="5" Text="{Binding ElementName=LST_Offres, Path=SelectedItem.DateDebutPublication, StringFormat=dd/MM/yyyy}" />
+
+            <Label Content="Durée de diffusion"  Grid.Column="1" Grid.Row="11" Margin="5"></Label>
+            <TextBox x:Name="TXT_DureeDiffusion" Grid.Column="2" Grid.Row="11" Margin="5" Text="{Binding ElementName=LST_Offres, Path=SelectedItem.DureedeDiffusion}" />
+
+            <Button  Margin="10" x:Name="BTN_Modifier" Grid.Row="13"  Grid.Column="2" Padding="5" Click="BTN_Modifier_Click">Modifier</Button>
+            <Button  Margin="10" x:Name="BTN_Supprimer" Grid.Row="13"  Grid.Column="3" Padding="5" Click="BTN_Supprimer_Click">Supprimer</Button>
+        </Grid>
+    </Grid>
+</UserControl>

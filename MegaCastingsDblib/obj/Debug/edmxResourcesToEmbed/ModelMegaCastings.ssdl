@@ -1,0 +1,138 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MegaCastingModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Clients">
+    <Key>
+      <PropertyRef Name="Identifiant" />
+    </Key>
+    <Property Name="Identifiant" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nom" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Siret" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="URL" Type="varchar" MaxLength="100" />
+    <Property Name="Email" Type="varchar" MaxLength="100" />
+    <Property Name="Telephone" Type="varchar" MaxLength="20" />
+    <Property Name="Fax" Type="varchar" MaxLength="20" />
+    <Property Name="NumeroRue" Type="varchar" MaxLength="10" />
+    <Property Name="Rue" Type="varchar" MaxLength="100" />
+    <Property Name="CodePostal" Type="varchar" MaxLength="10" />
+    <Property Name="Ville" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="DomaineDeMetier">
+    <Key>
+      <PropertyRef Name="Identifiant" />
+    </Key>
+    <Property Name="Identifiant" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NomDomaine" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Metier">
+    <Key>
+      <PropertyRef Name="Identifiant" />
+    </Key>
+    <Property Name="Identifiant" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NomMetier" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="IdentifiantDomaine" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Offres">
+    <Key>
+      <PropertyRef Name="Identifiant" />
+    </Key>
+    <Property Name="Identifiant" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdentifiantTypesContrat" Type="bigint" Nullable="false" />
+    <Property Name="IdentifiantMetier" Type="bigint" Nullable="false" />
+    <Property Name="IdentifiantClients" Type="bigint" Nullable="false" />
+    <Property Name="Intitule" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Reference" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="DescriptionPoste" Type="varchar" MaxLength="250" Nullable="false" />
+    <Property Name="DescriptionProfil" Type="varchar" MaxLength="250" Nullable="false" />
+    <Property Name="Localisation" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="NombreDePostes" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="DateDebutPublication" Type="date" Nullable="false" />
+    <Property Name="DureedeDiffusion" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Partenaire">
+    <Key>
+      <PropertyRef Name="Identifiant" />
+    </Key>
+    <Property Name="Identifiant" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nom" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="MotDePasse" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TypesDeContrat">
+    <Key>
+      <PropertyRef Name="Identifiant" />
+    </Key>
+    <Property Name="Identifiant" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NomContrat" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Metier_DomaineDeMetier">
+    <End Role="DomaineDeMetier" Type="Self.DomaineDeMetier" Multiplicity="1" />
+    <End Role="Metier" Type="Self.Metier" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DomaineDeMetier">
+        <PropertyRef Name="Identifiant" />
+      </Principal>
+      <Dependent Role="Metier">
+        <PropertyRef Name="IdentifiantDomaine" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Offres_Clients">
+    <End Role="Clients" Type="Self.Clients" Multiplicity="1" />
+    <End Role="Offres" Type="Self.Offres" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Clients">
+        <PropertyRef Name="Identifiant" />
+      </Principal>
+      <Dependent Role="Offres">
+        <PropertyRef Name="IdentifiantClients" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Offres_Metier">
+    <End Role="Metier" Type="Self.Metier" Multiplicity="1" />
+    <End Role="Offres" Type="Self.Offres" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Metier">
+        <PropertyRef Name="Identifiant" />
+      </Principal>
+      <Dependent Role="Offres">
+        <PropertyRef Name="IdentifiantMetier" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Offres_TypesDeContrat">
+    <End Role="TypesDeContrat" Type="Self.TypesDeContrat" Multiplicity="1" />
+    <End Role="Offres" Type="Self.Offres" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TypesDeContrat">
+        <PropertyRef Name="Identifiant" />
+      </Principal>
+      <Dependent Role="Offres">
+        <PropertyRef Name="IdentifiantTypesContrat" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="MegaCastingModelStoreContainer">
+    <EntitySet Name="Clients" EntityType="Self.Clients" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DomaineDeMetier" EntityType="Self.DomaineDeMetier" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Metier" EntityType="Self.Metier" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Offres" EntityType="Self.Offres" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Partenaire" EntityType="Self.Partenaire" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TypesDeContrat" EntityType="Self.TypesDeContrat" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Metier_DomaineDeMetier" Association="Self.FK_Metier_DomaineDeMetier">
+      <End Role="DomaineDeMetier" EntitySet="DomaineDeMetier" />
+      <End Role="Metier" EntitySet="Metier" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Offres_Clients" Association="Self.FK_Offres_Clients">
+      <End Role="Clients" EntitySet="Clients" />
+      <End Role="Offres" EntitySet="Offres" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Offres_Metier" Association="Self.FK_Offres_Metier">
+      <End Role="Metier" EntitySet="Metier" />
+      <End Role="Offres" EntitySet="Offres" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Offres_TypesDeContrat" Association="Self.FK_Offres_TypesDeContrat">
+      <End Role="TypesDeContrat" EntitySet="TypesDeContrat" />
+      <End Role="Offres" EntitySet="Offres" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="MegaCastingModelStoreContainer" CdmEntityContainer="MegaCastingEntities3">
+    <EntitySetMapping Name="Clients">
+      <EntityTypeMapping TypeName="MegaCastingModel.Client">
+        <MappingFragment StoreEntitySet="Clients">
+          <ScalarProperty Name="Identifiant" ColumnName="Identifiant" />
+          <ScalarProperty Name="Nom" ColumnName="Nom" />
+          <ScalarProperty Name="Siret" ColumnName="Siret" />
+          <ScalarProperty Name="URL" ColumnName="URL" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+          <ScalarProperty Name="Fax" ColumnName="Fax" />
+          <ScalarProperty Name="NumeroRue" ColumnName="NumeroRue" />
+          <ScalarProperty Name="Rue" ColumnName="Rue" />
+          <ScalarProperty Name="CodePostal" ColumnName="CodePostal" />
+          <ScalarProperty Name="Ville" ColumnName="Ville" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DomaineDeMetiers">
+      <EntityTypeMapping TypeName="MegaCastingModel.DomaineDeMetier">
+        <MappingFragment StoreEntitySet="DomaineDeMetier">
+          <ScalarProperty Name="Identifiant" ColumnName="Identifiant" />
+          <ScalarProperty Name="NomDomaine" ColumnName="NomDomaine" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Metiers">
+      <EntityTypeMapping TypeName="MegaCastingModel.Metier">
+        <MappingFragment StoreEntitySet="Metier">
+          <ScalarProperty Name="Identifiant" ColumnName="Identifiant" />
+          <ScalarProperty Name="NomMetier" ColumnName="NomMetier" />
+          <ScalarProperty Name="IdentifiantDomaine" ColumnName="IdentifiantDomaine" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Offres">
+      <EntityTypeMapping TypeName="MegaCastingModel.Offre">
+        <MappingFragment StoreEntitySet="Offres">
+          <ScalarProperty Name="Identifiant" ColumnName="Identifiant" />
+          <ScalarProperty Name="IdentifiantTypesContrat" ColumnName="IdentifiantTypesContrat" />
+          <ScalarProperty Name="IdentifiantMetier" ColumnName="IdentifiantMetier" />
+          <ScalarProperty Name="IdentifiantClients" ColumnName="IdentifiantClients" />
+          <ScalarProperty Name="Intitule" ColumnName="Intitule" />
+          <ScalarProperty Name="Reference" ColumnName="Reference" />
+          <ScalarProperty Name="DescriptionPoste" ColumnName="DescriptionPoste" />
+          <ScalarProperty Name="DescriptionProfil" ColumnName="DescriptionProfil" />
+          <ScalarProperty Name="Localisation" ColumnName="Localisation" />
+          <ScalarProperty Name="NombreDePostes" ColumnName="NombreDePostes" />
+          <ScalarProperty Name="DateDebutPublication" ColumnName="DateDebutPublication" />
+          <ScalarProperty Name="DureeDeDiffusion" ColumnName="DureeDeDiffusion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Partenaires">
+      <EntityTypeMapping TypeName="MegaCastingModel.Partenaire">
+        <MappingFragment StoreEntitySet="Partenaire">
+          <ScalarProperty Name="Identifiant" ColumnName="Identifiant" />
+          <ScalarProperty Name="Nom" ColumnName="Nom" />
+          <ScalarProperty Name="MotDePasse" ColumnName="MotDePasse" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TypesDeContrats">
+      <EntityTypeMapping TypeName="MegaCastingModel.TypesDeContrat">
+        <MappingFragment StoreEntitySet="TypesDeContrat">
+          <ScalarProperty Name="Identifiant" ColumnName="Identifiant" />
+          <ScalarProperty Name="NomContrat" ColumnName="NomContrat" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
