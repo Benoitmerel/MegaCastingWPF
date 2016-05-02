@@ -47,6 +47,8 @@ namespace MegaCastingsWPF
             ListeMetier = new ObservableCollection<Metier>(db.Metiers.ToList());
 
             offre = context;
+          
+            offre.DateDebutPublication = DateTime.Now;
 
             this.DataContext = this;
         }
@@ -55,19 +57,19 @@ namespace MegaCastingsWPF
         private void BTN_Sauvegarder_Click(object sender, RoutedEventArgs e)
         {
             //On rentre les informations relative a l'offre taper par l'utilisateur
-            offre.Intitule = TXT_Intitule.Text;
-            offre.Localisation = TXT_Localisation.Text;
-            offre.Reference = TXT_Reference.Text;
-            offre.NombreDePostes = TXT_NombreDePostes.Text;
-            offre.DescriptionPoste = TXT_DescritptionPoste.Text;
-            offre.DescriptionProfil = TXT_DescritptionProfil.Text;
+            //offre.Intitule = TXT_Intitule.Text;
+            //offre.Localisation = TXT_Localisation.Text;
+            //offre.Reference = TXT_Reference.Text;
+            //offre.NombreDePostes = TXT_NombreDePostes.Text;
+            //offre.DescriptionPoste = TXT_DescritptionPoste.Text;
+            //offre.DescriptionProfil = TXT_DescritptionProfil.Text;
 
-            offre.Metier = CBX_Metier.SelectedItem as Metier;
-            offre.Client = CBX_Client.SelectedItem as Client;
-            offre.TypesDeContrat = CBX_TypesDecontrat.SelectedItem as TypesDeContrat;
+            //offre.Metier = CBX_Metier.SelectedItem as Metier;
+            //offre.Client = CBX_Client.SelectedItem as Client;
+            //offre.TypesDeContrat = CBX_TypesDecontrat.SelectedItem as TypesDeContrat;
 
-            offre.DateDebutPublication = Convert.ToDateTime(TXT_DateDebutPublication.Text);
-            offre.DureeDeDiffusion = int.Parse(TXT_DureeDiffusion.Text);
+            //offre.DateDebutPublication = Convert.ToDateTime(TXT_DateDebutPublication.Text);
+            //offre.DureeDeDiffusion = int.Parse(TXT_DureeDiffusion.Text);
             // on envoie true en fermant la fenêtre pour confirmer la validation.
             DialogResult = true;
         }

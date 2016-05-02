@@ -87,7 +87,7 @@
 
             <Label Content="Intitule" Grid.Column="1" Grid.Row="4" Margin="5"></Label>
             <TextBox x:Name="TXT_Intitule" Grid.Column="2" Grid.Row="4"  Margin="5" Text="{Binding ElementName=LST_Offres, Path=SelectedItem.Intitule}" />
-            <Label Content="Numero de Siret"  Grid.Column="1" Grid.Row="5"  Margin="5"></Label>
+            <Label Content="Référence"  Grid.Column="1" Grid.Row="5"  Margin="5"></Label>
             <TextBox x:Name="TXT_Reference" Grid.Column="2" Grid.Row="5"  Margin="5" Text="{Binding ElementName=LST_Offres, Path=SelectedItem.Reference}" />
 
             <Label Content="Description du poste" Grid.Column="1" Grid.Row="6"  Margin="5"></Label>
@@ -102,10 +102,10 @@
             <Label Content="Nombre de poste" Grid.Column="1" Grid.Row="9" Margin="5"></Label>
             <TextBox x:Name="TXT_NombreDePostes" Grid.Column="2" Grid.Row="9" Margin="5" Text="{Binding ElementName=LST_Offres, Path=SelectedItem.NombreDePostes}" />
             <Label Content="Date de publication"  Grid.Column="1" Grid.Row="10" Margin="5"></Label>
-            <TextBox x:Name="TXT_DateDebutPublication" Grid.Column="2" Grid.Row="10" Margin="5" Text="{Binding ElementName=LST_Offres, Path=SelectedItem.DateDebutPublication, StringFormat=dd/MM/yyyy}" />
+            <DatePicker x:Name="TXT_DateDebutPublication" Grid.Column="2" Grid.Row="10" Margin="5" SelectedDate="{Binding ElementName=LST_Offres, Path=SelectedItem.DateDebutPublication}" />
 
             <Label Content="Durée de diffusion"  Grid.Column="1" Grid.Row="11" Margin="5"></Label>
-            <TextBox x:Name="TXT_DureeDiffusion" Grid.Column="2" Grid.Row="11" Margin="5" Text="{Binding ElementName=LST_Offres, Path=SelectedItem.DureedeDiffusion}" />
+            <TextBox x:Name="TXT_DureeDiffusion" Grid.Column="2" Grid.Row="11" Margin="5" Text="{Binding ElementName=LST_Offres, Path=SelectedItem.DureeDeDiffusion}" />
 
             <Button  Margin="10" x:Name="BTN_Modifier" Grid.Row="13"  Grid.Column="2" Padding="5" Click="BTN_Modifier_Click">Modifier</Button>
             <Button  Margin="10" x:Name="BTN_Supprimer" Grid.Row="13"  Grid.Column="3" Padding="5" Click="BTN_Supprimer_Click">Supprimer</Button>

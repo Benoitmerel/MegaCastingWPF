@@ -29,7 +29,6 @@ namespace MegaCastingsWPF
         {
             InitializeComponent();
 
-            InitializeComponent();
 
             // On récupere le nouveau partenaire.
             this.partenaire = partenairecontext;
@@ -39,16 +38,44 @@ namespace MegaCastingsWPF
         // Méthode pour sauvegarder l'ajout
         private void BTN_Sauvegarder_Click(object sender, RoutedEventArgs e)
         {
+            Boolean Verif = true;
             // On met les informations relative au client des TextBox au client
-            partenaire.Nom = TXT_NomPartenaire.Text;
+            String MotDePasse;
+            String ConfirmationMotDePasse;
 
             byte[] buffer = System.Text.Encoding.ASCII.GetBytes(TXT_MotDePasse.Password);
+            byte[] bufferConfirmation = System.Text.Encoding.ASCII.GetBytes(TXT_ConfirmationMotDePasse.Password);
             SHA1CryptoServiceProvider cryptoTransformSHA1 = new SHA1CryptoServiceProvider();
-            partenaire.MotDePasse = BitConverter.ToString(cryptoTransformSHA1.ComputeHash(buffer)).Replace("-", "");
+            MotDePasse = BitConverter.ToString(cryptoTransformSHA1.ComputeHash(buffer)).Replace("-", "");
+            ConfirmationMotDePasse = BitConverter.ToString(cryptoTransformSHA1.ComputeHash(bufferConfirmation)).Replace("-", "");
+            if (MotDePasse.Equals(ConfirmationMotDePasse))
+            {
+
+                partenaire.MotDePasse = MotDePasse;
+                // on envoie true en fermant la fenêtre pour confirmer la validation.
+                DialogResult = true;
+            }
+            else
+            {
+                MessageBox.Show("Les mots de passes ne sont pas identiques.");
+                Verif = false;
+            }
+
+            if (String.IsNullOrEmpty(TXT_MotDePasse.Password))
+            {
+                MessageBox.Show("Veuillez renseigner un mot de passe.");
+                Verif = false;
+            }
+
+                if (Verif == true)
+            {
+
+            }
+            
 
 
-            // on envoie true en fermant la fenêtre pour confirmer la validation.
-            DialogResult = true;
+            
+           
         }
 
         //Méthode pour annuler l'ajout

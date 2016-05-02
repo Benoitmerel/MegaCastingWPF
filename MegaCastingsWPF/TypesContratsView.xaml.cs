@@ -33,9 +33,11 @@ namespace MegaCastingsWPF
         public TypesContratsView()
         {
             InitializeComponent();
+          
+           
 
             //On récupère les clients de la base de donnée.
-         
+
             ListeTypesDeContrat = app.TypesDeContrat;
             this.DataContext = this;
         }
@@ -52,9 +54,9 @@ namespace MegaCastingsWPF
                 try
                 {
                   
-                    app.db.TypesDeContrats.Add(fenetreTypeContrat.typesDeContrat);
+                    app.db.TypesDeContrats.Add(typesDeContrat);
                     app.db.SaveChanges();
-                    this.ListeTypesDeContrat.Add(fenetreTypeContrat.typesDeContrat);
+                    this.ListeTypesDeContrat.Add(typesDeContrat);
 
                     MessageBox.Show("Le type de contrat  a bien été ajouté");
                 }

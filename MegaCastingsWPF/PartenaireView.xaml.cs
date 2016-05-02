@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Data.Entity.Validation;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -30,6 +31,9 @@ namespace MegaCastingsWPF
         //Creation d'une liste de tous les partenaires
         public ObservableCollection<Partenaire> ListePartenaire { get; set; }
 
+        public Partenaire partenaire { get; set; }
+
+
         public PartenaireView()
         {
             InitializeComponent();
@@ -42,16 +46,17 @@ namespace MegaCastingsWPF
         // Méthode qui permet d'ajouter un nouveau partenaire
         private void BTN_Ajouter_Click(object sender, RoutedEventArgs e)
         {
+            partenaire = new Partenaire();
             //Ouverture d'une nouvelle fenetre pour ajouter un partenaire, on lui envoie un nouveau partenaire
-            FenetrePartenaire fenetrePartenaire = new FenetrePartenaire(new Partenaire());
+            FenetrePartenaire fenetrePartenaire = new FenetrePartenaire(partenaire);
             if (fenetrePartenaire.ShowDialog() == true)
             {
                 // Si l'utilisateur confirme l'ajout, on essaye de l'ajouter a la base de données et on sauvegarde.
                 try
                 {
-                    db.Partenaires.Add(fenetrePartenaire.partenaire);
+                    db.Partenaires.Add(partenaire);
                     db.SaveChanges();
-                    this.ListePartenaire.Add(fenetrePartenaire.partenaire);
+                    this.ListePartenaire.Add(partenaire);
 
                     MessageBox.Show("Le partenaire a bien été ajouté");
                 }

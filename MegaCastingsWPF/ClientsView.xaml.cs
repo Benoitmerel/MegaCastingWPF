@@ -29,6 +29,7 @@ namespace MegaCastingsWPF
     {
         //Creation d'une liste de toutes les clients
         public ObservableCollection<Client> ListeClients { get; set; }
+        public Client client { get; set; }
 
         public ClientsView()
         {
@@ -46,8 +47,9 @@ namespace MegaCastingsWPF
         // Méthode qui permet d'ajouter un nouveau client
         private void BTN_Ajouter_Click(object sender, RoutedEventArgs e)
         {
+            client = new Client();
             //Ouverture d'une nouvelle fenetre pour ajouter un client, on lui envoie un nouveau client
-            FenetreClient fenetreClient = new FenetreClient(new Client());
+            FenetreClient fenetreClient = new FenetreClient(client);
             if (fenetreClient.ShowDialog() == true)
             {
 
@@ -55,9 +57,9 @@ namespace MegaCastingsWPF
                 // Si l'utilisateur confirme l'ajout, on essaye de l'ajouter a la base de données et on sauvegarde.
                 try
                 {
-                    app.db.Clients.Add(fenetreClient.client);
+                    app.db.Clients.Add(client);
                     app.db.SaveChanges();
-                    ListeClients.Add(fenetreClient.client);
+                    ListeClients.Add(client);
 
 
                     MessageBox.Show("Le client a bien été ajouté");

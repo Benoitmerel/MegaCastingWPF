@@ -41,10 +41,6 @@ namespace MegaCastingsWPF
         // Méthode pour sauvegarder l'ajout ou la modification
         private void BTN_Sauvegarder_Click(object sender, RoutedEventArgs e)
         {
-            // ON met les informations relative au métier des TextBox au métier
-            //metier.NomMetier = TXT_NomMetier.Text;
-            //DomaineDeMetier dmMetier = CBX_DomaineMetier.SelectedItem as DomaineDeMetier;
-            //metier.IdentifiantDomaine = dmMetier.Identifiant;
 
             // on envoie true en fermant la fenêtre pour confirmer la validation.
             DialogResult = true;

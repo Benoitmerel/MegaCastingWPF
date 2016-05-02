@@ -44,8 +44,9 @@ namespace MegaCastingsWPF
             string patternNumero = @"^[0-9]{10}";
             Regex regex = new Regex(patternNumero);
             bool Verif = true;
-
-            if (TXT_Fax.Text != "")
+         
+           
+            if (!String.IsNullOrWhiteSpace(TXT_Fax.Text))
             {
                 if (!regex.IsMatch(TXT_Fax.Text))
                 {
@@ -54,7 +55,7 @@ namespace MegaCastingsWPF
                 }
             }
 
-            if (TXT_Telephone.Text != "")
+            if (!String.IsNullOrWhiteSpace(TXT_Telephone.Text))
             {
                 if (!regex.IsMatch(TXT_Telephone.Text))
                 {
@@ -63,7 +64,7 @@ namespace MegaCastingsWPF
                 }
             }
 
-            if (TXT_Email.Text != "")
+            if (!String.IsNullOrWhiteSpace(TXT_Email.Text))
             {
                 try
                 {
@@ -73,23 +74,13 @@ namespace MegaCastingsWPF
                 {
                     Verif = false;
                     MessageBox.Show("L'adresse email n'est pas valide");
-                    //DialogResult = false;
+                   
                 }
             }
 
 
             if (Verif == true)
             {
-                client.Nom = TXT_NomClient.Text;
-                client.Siret = TXT_NumeroSiret.Text;
-                client.NumeroRue = TXT_NumeroRue.Text;
-                client.Rue = TXT_Rue.Text;
-                client.CodePostal = TXT_CodePostal.Text;
-                client.Ville = TXT_Ville.Text;
-                client.Telephone = TXT_Telephone.Text;
-                client.Fax = TXT_Fax.Text;
-                client.URL = TXT_URL.Text;
-                client.Email = TXT_Email.Text;
 
                 // on envoie true en fermant la fenêtre pour confirmer la validation.
                 DialogResult = true;

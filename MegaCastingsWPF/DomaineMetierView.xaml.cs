@@ -29,6 +29,8 @@ namespace MegaCastingsWPF
         //Creation d'une liste de tous les domaines de métier
         public ObservableCollection<DomaineDeMetier> ListeDomaineMetier { get; set; }
 
+        public DomaineDeMetier domaineDeMetier { get; set; }
+
         public DomaineMetierView()
         {
             InitializeComponent();
@@ -42,17 +44,18 @@ namespace MegaCastingsWPF
         // Méthode d'ajout d'un domaine de métier
         private void BTN_Ajouter_Click(object sender, RoutedEventArgs e)
         {
+            domaineDeMetier = new DomaineDeMetier();
             //Ouverture d'une nouvelle fenetre pour ajouter un domaine de métier, on lui envoie un nouveau domaine de métier
-            FenetreDomaineMetier fenetreDomaineMetier = new FenetreDomaineMetier(new DomaineDeMetier());
+            FenetreDomaineMetier fenetreDomaineMetier = new FenetreDomaineMetier(domaineDeMetier);
 
             if (fenetreDomaineMetier.ShowDialog() == true)
             {
                 // Si l'utilisateur confirme l'ajout, on essaye de l'ajouter a la base de données et on sauvegarde.
                 try
                 {
-                    app.db.DomaineDeMetiers.Add(fenetreDomaineMetier.domaineDeMetier);
+                    app.db.DomaineDeMetiers.Add(domaineDeMetier);
                     app.db.SaveChanges();
-                    this.ListeDomaineMetier.Add(fenetreDomaineMetier.domaineDeMetier);
+                    this.ListeDomaineMetier.Add(domaineDeMetier);
 
                     MessageBox.Show("Le domaine de métier a bien été ajouté");
                 }

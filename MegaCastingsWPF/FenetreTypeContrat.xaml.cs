@@ -33,9 +33,7 @@ namespace MegaCastingsWPF
 
         private void BTN_Sauvegarder_Click(object sender, RoutedEventArgs e)
         {
-            typesDeContrat.NomContrat = TXT_TypesDeContrat.Text;
             // on envoie true en fermant la fenêtre pour confirmer la validation.
-
             DialogResult = true;
         }
 

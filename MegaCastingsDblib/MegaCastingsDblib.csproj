@@ -75,11 +75,6 @@
     <Compile Include="Metier.cs">
       <DependentUpon>MegaCasting.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Client.cs" />
-    <Compile Include="Models\DomaineDeMetier.cs" />
-    <Compile Include="Models\Metier.cs" />
-    <Compile Include="Models\Offre.cs" />
-    <Compile Include="Models\TypesDeContrat.cs" />
     <Compile Include="Offre.cs">
       <DependentUpon>MegaCasting.tt</DependentUpon>
     </Compile>

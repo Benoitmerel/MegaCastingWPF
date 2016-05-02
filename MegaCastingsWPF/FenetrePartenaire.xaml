@@ -11,6 +11,7 @@
             <RowDefinition Height="30"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="auto"/>
 
@@ -22,11 +23,14 @@
         </Grid.ColumnDefinitions>
 
         <Label Content="Nom du partenaire" Grid.Column="1" Grid.Row="1" Margin="5"></Label>
-        <TextBox x:Name="TXT_NomPartenaire" Grid.Column="2" Grid.Row="1" Margin="5" Text="{Binding Partenaire.Nom}" />
+        <TextBox x:Name="TXT_NomPartenaire" Grid.Column="2" Grid.Row="1" Margin="5" Text="{Binding partenaire.Nom}" />
         <Label Content="Mot de passe"  Grid.Column="1" Grid.Row="2" Margin="5"></Label>
         <PasswordBox x:Name="TXT_MotDePasse"   Grid.Column="2" Grid.Row="2" Margin="5"/>
 
-        <Button x:Name="BTN_Sauvegarder" Grid.Column="1" Grid.Row="4" Margin="5" Click="BTN_Sauvegarder_Click">Sauvegarder</Button>
-        <Button x:Name="BTN_Annuler" Grid.Column="2" Grid.Row="4" Margin="5" Click="BTN_Annuler_Click">Annuler</Button>
+        <Label Content="Confirmer le mot de passe"  Grid.Column="1" Grid.Row="3" Margin="5"></Label>
+        <PasswordBox x:Name="TXT_ConfirmationMotDePasse"   Grid.Column="2" Grid.Row="3" Margin="5"/>
+
+        <Button x:Name="BTN_Sauvegarder" Grid.Column="1" Grid.Row="5" Margin="5" Click="BTN_Sauvegarder_Click">Sauvegarder</Button>
+        <Button x:Name="BTN_Annuler" Grid.Column="2" Grid.Row="5" Margin="5" Click="BTN_Annuler_Click">Annuler</Button>
     </Grid>
 </Window>

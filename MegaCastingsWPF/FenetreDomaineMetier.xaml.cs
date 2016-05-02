@@ -35,8 +35,6 @@ namespace MegaCastingsWPF
         // Méthode pour confirmer la modification/ajout
         private void BTN_Sauvegarder_Click(object sender, RoutedEventArgs e)
         {
-            // on récupere les champs du domaine de métier
-            domaineDeMetier.NomDomaine = TXT_DomaineDeMetier.Text;
 
             // on envoie true en fermant la fenêtre pour confirmer la validation.
             DialogResult = true;

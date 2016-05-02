@@ -30,6 +30,8 @@ namespace MegaCastingsWPF
         // on crée les accesseurs pour la liste des domaines de métiers
         public ObservableCollection<DomaineDeMetier> ListeDomaineMetier { get; set; }
 
+        public Metier metier { get; set; }
+
         public MetierView()
         {
             InitializeComponent();
@@ -45,16 +47,17 @@ namespace MegaCastingsWPF
         // Méthode qui permet d'ajouter un nouveau métier
         private void BTN_Ajouter_Click(object sender, RoutedEventArgs e)
         {
+            metier = new Metier();
             //Ouverture d'une nouvelle fenetre pour ajouter un métier, on lui envoie un nouveau métier
-            FenetreMetier fenetreMetier = new FenetreMetier(new Metier(), app.db);
+            FenetreMetier fenetreMetier = new FenetreMetier(metier, app.db);
             if (fenetreMetier.ShowDialog() == true)
             {
                 // Si l'utilisateur confirme l'ajout, on essaye de l'ajouter a la base de données et on sauvegarde.s
                 try
                 {
-                    app.db.Metiers.Add(fenetreMetier.metier);
+                    app.db.Metiers.Add(metier);
                     app.db.SaveChanges();
-                    this.ListeMetier.Add(fenetreMetier.metier);
+                    this.ListeMetier.Add(metier);
 
                     MessageBox.Show("Le métier a bien été ajouté");
                 }

@@ -37,6 +37,8 @@ namespace MegaCastingsWPF
         //Creation d'une liste de toutes les métier
         public ObservableCollection<Metier> ListeMetier { get; set; }
 
+        public Offre offre { get; set; }
+
         public OffresView()
         {
             InitializeComponent();
@@ -60,16 +62,18 @@ namespace MegaCastingsWPF
         // Méthode qui permet d'ajouter une nouvelle offre
         private void BTN_Ajouter_Click(object sender, RoutedEventArgs e)
         {
+
+            offre = new Offre();
             //Ouverture d'une nouvelle fenetre pour ajouter une offre, on lui envoie une nouvelle offre
-            FenetreOffre fenetreOffre = new FenetreOffre(new Offre(), app.db);
+            FenetreOffre fenetreOffre = new FenetreOffre(offre, app.db);
             if (fenetreOffre.ShowDialog() == true)
             {
                 // Si l'utilisateur confirme l'ajout, on essaye de l'ajouter a la base de données et on sauvegarde.
                 try
                 {
-                    app.db.Offres.Add(fenetreOffre.offre);
+                    app.db.Offres.Add(offre);
                     app.db.SaveChanges();
-                    this.ListeOffres.Add(fenetreOffre.offre);
+                    this.ListeOffres.Add(offre);
 
                     MessageBox.Show("L'offre a bien été ajouté");
                 }

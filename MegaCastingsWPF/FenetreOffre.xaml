@@ -34,7 +34,7 @@
         </Grid.ColumnDefinitions>
 
         <Label Content="Type de contrat"  Grid.Column="1" Grid.Row="1" Margin="5"></Label>
-        <ComboBox x:Name="CBX_TypesDecontrat" Grid.Column="2" Grid.Row="1" Margin="5" ItemsSource="{Binding  ListeTypesDeContrat}" >
+        <ComboBox x:Name="CBX_TypesDecontrat" Grid.Column="2" Grid.Row="1" Margin="5"  SelectedItem="{Binding offre.TypesDeContrat}" ItemsSource="{Binding  ListeTypesDeContrat}" >
             <ComboBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock Text="{Binding NomContrat}" />
@@ -44,7 +44,7 @@
 
 
         <Label Content="Métier"  Grid.Column="1" Grid.Row="2" Margin="5"></Label>
-        <ComboBox x:Name="CBX_Metier" Grid.Column="2" Grid.Row="2" Margin="5" ItemsSource="{Binding  ListeMetier}" >
+        <ComboBox x:Name="CBX_Metier" Grid.Column="2" Grid.Row="2" Margin="5"  SelectedItem="{Binding offre.Metier}" ItemsSource="{Binding  ListeMetier}" >
             <ComboBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock Text="{Binding NomMetier}" />
@@ -54,7 +54,7 @@
 
 
         <Label Content="Nom du client" Grid.Column="1" Grid.Row="3" Margin="5"></Label>
-        <ComboBox x:Name="CBX_Client" Grid.Column="2" Grid.Row="3" Margin="5" ItemsSource="{Binding  ListeClients}" >
+        <ComboBox x:Name="CBX_Client" Grid.Column="2" Grid.Row="3" Margin="5"  SelectedItem="{Binding offre.Client}" ItemsSource="{Binding  ListeClients}" >
             <ComboBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock Text="{Binding Nom}" />
@@ -64,26 +64,26 @@
 
 
         <Label Content="Intitule" Grid.Column="1" Grid.Row="4" Margin="5"></Label>
-        <TextBox x:Name="TXT_Intitule" Grid.Column="2" Grid.Row="4"  Margin="5" Text="{Binding ElementName=offre, Path=SelectedItem.Intitule}" />
-        <Label Content="Numero de Siret"  Grid.Column="1" Grid.Row="5"  Margin="5"></Label>
-        <TextBox x:Name="TXT_Reference" Grid.Column="2" Grid.Row="5"  Margin="5" Text="{Binding ElementName=offre, Path=SelectedItem.Reference}" />
+        <TextBox x:Name="TXT_Intitule" Grid.Column="2" Grid.Row="4"  Margin="5" Text="{Binding offre.Intitule}" />
+        <Label Content="Référence"  Grid.Column="1" Grid.Row="5"  Margin="5"></Label>
+        <TextBox x:Name="TXT_Reference" Grid.Column="2" Grid.Row="5"  Margin="5" Text="{Binding offre.Reference}" />
 
         <Label Content="Description du poste" Grid.Column="1" Grid.Row="6"  Margin="5"></Label>
-        <TextBox x:Name="TXT_DescritptionPoste" Grid.Column="2" Grid.Row="6"  Margin="5" Text="{Binding ElementName=offre, Path=SelectedItem.DescriptionPoste}" />
+        <TextBox x:Name="TXT_DescritptionPoste" Grid.Column="2" Grid.Row="6"  Margin="5" Text="{Binding offre.DescriptionPoste}" />
         <Label Content="Descritption du profil"  Grid.Column="1" Grid.Row="7"  Margin="5"></Label>
-        <TextBox x:Name="TXT_DescritptionProfil" Grid.Column="2" Grid.Row="7"  Margin="5" Text="{Binding ElementName=offre, Path=SelectedItem.DescriptionProfil}" />
+        <TextBox x:Name="TXT_DescritptionProfil" Grid.Column="2" Grid.Row="7"  Margin="5" Text="{Binding offre.DescriptionProfil}" />
 
         
         <Label Content="Localisation de l'offre"  Grid.Column="1" Grid.Row="8" Margin="5"></Label>
-        <TextBox x:Name="TXT_Localisation" Grid.Column="2" Grid.Row="8" Margin="5" Text="{Binding ElementName=offre, Path=SelectedItem.Localisation}" />
+        <TextBox x:Name="TXT_Localisation" Grid.Column="2" Grid.Row="8" Margin="5" Text="{Binding offre.Localisation}" />
 
         <Label Content="Nombre de poste" Grid.Column="1" Grid.Row="9" Margin="5"></Label>
-        <TextBox x:Name="TXT_NombreDePostes" Grid.Column="2" Grid.Row="9" Margin="5" Text="{Binding ElementName=offre, Path=SelectedItem.NombreDePostes}" />
+        <TextBox x:Name="TXT_NombreDePostes" Grid.Column="2" Grid.Row="9" Margin="5" Text="{Binding offre.NombreDePostes}" />
         <Label Content="Date de publication"  Grid.Column="1" Grid.Row="10" Margin="5"></Label>
-        <TextBox x:Name="TXT_DateDebutPublication" Grid.Column="2" Grid.Row="10" Margin="5" Text="{Binding ElementName=offre, Path=SelectedItem.DateDebutPublication, StringFormat=dd/MM/yyyy}" />
+        <DatePicker x:Name="TXT_DateDebutPublication" Grid.Column="2" Grid.Row="10" Margin="5" SelectedDate="{Binding offre.DateDebutPublication}" />
 
         <Label Content="Durée de diffusion"  Grid.Column="1" Grid.Row="11" Margin="5"></Label>
-        <TextBox x:Name="TXT_DureeDiffusion" Grid.Column="2" Grid.Row="11" Margin="5" Text="{Binding ElementName=offre, Path=SelectedItem.DuréedeDifusion}" />
+        <TextBox x:Name="TXT_DureeDiffusion" Grid.Column="2" Grid.Row="11" Margin="5" Text="{Binding offre.DureeDeDiffusion}" />
 
 
         <Button x:Name="BTN_Sauvegarder" Grid.Column="1" Grid.Row="13" Margin="5" Click="BTN_Sauvegarder_Click">Sauvegarder</Button>
